@@ -1,0 +1,189 @@
+#weatherPage {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/*新聞資訊*/
+#homePage {
+    width: 100%; 
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.widerSearchForm {
+    width: 30rem;
+}
+
+#searchPage {
+    width: 80%;
+    margin: 10px auto;
+}
+
+#pageInput {
+    width: 3rem;
+}
+
+/*台灣地圖*/
+#taiwan {
+    width: 45%;
+    height: 100vh;
+}
+
+#taiwan-map {
+    width: 100%; 
+    height: 100%;
+}
+
+
+#map {
+    position: relative;
+    width: 100%; 
+    height: 100%;
+}
+
+svg {
+    background-color:#87cefa;
+}
+
+#info-block {
+    border: 1px solid black;
+    border-radius: 6px;
+    background-color: white;
+    padding: 2px;
+    position: absolute;
+    top: 4px;
+    right: 4px;
+}
+
+#offshore {
+    position: absolute;
+    top: 2%;
+    left: 2%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 2px;
+}
+
+path:hover {
+    cursor: pointer;
+}
+
+svg {
+    border: 2px solid black;
+}
+
+.cityWeatherBlock:hover {
+    cursor: pointer;
+}
+
+#wxIcon {
+    font-size: 5rem;
+    margin: 10px;
+}
+
+/*天氣資訊卡片*/
+#weatherCard {
+    width: 45%;
+}
+
+#weatherCardInfo {
+    width: 100%;
+}
+
+#localNameAndWxAndT {
+    display: flex;
+    flex-direction: row;
+}
+
+#avgTemp {
+    font-size: 2.5rem;
+}
+
+.threeDaysForeCast {
+    width: 30%; 
+    margin: 1%;
+}
+
+/*RWD*/
+@media screen and (max-width: 766px) {
+    body {
+        height: 100vh;
+        overflow: auto;
+    }
+
+    #weatherPage {
+        display: flex;
+        flex-direction: column;
+    }
+
+    /*新聞資訊*/
+    .widerSearchForm {
+        width: 18rem;
+    }
+    
+    #navbarOffcanvasMd {
+        width: 70%;
+    }
+
+    .offcanvas #navbarSupportedContent {
+        flex-direction: column;
+        align-items: flex-start;
+        margin: 10px;
+    }
+
+    /*台灣地圖*/
+    #taiwan {
+        display: none;
+    }
+    
+    
+    /*天氣卡片*/
+    #weatherCard {
+        width: 95%;
+        height: 93.17vh;
+        overflow: scroll;
+    }
+
+    #localNameAndWxAndT {
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    #threeDaysForecast {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .threeDaysForeCast {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 767px) and (max-width: 1024px) {
+    body {
+        height: 100vh;
+        overflow: auto;
+    }
+    #weatherPage {
+        display: flex;
+        flex-direction: column;
+    }
+
+    /*台灣地圖*/
+    #taiwan {
+        width: 100%;
+        height: 100vh;
+    }
+
+    /*天氣資訊*/
+    #weatherCard {
+        width: 95%;
+    }
+}
