@@ -87,7 +87,7 @@
         navbarOffcanvasMd.classList.remove("show");
 
         //取得三天以內的資訊
-        const userAPIKey = "fb775cb64d134b5a87af351021cce00d";//User API Key請至 https://newsapi.org/ 註冊獲取
+        const userAPIKey = "d7e58a5819dc4182bc4e8b7ec5f664c1";//User API Key請至 https://newsapi.org/ 註冊獲取
         const url = `
         https://newsapi.org/v2/everything?q=${input}&from=${year}-${month}-${day}&language=en&pageSize=20&page=${page}&sortBy=popularity&apiKey=${userAPIKey}
         `;
@@ -270,7 +270,7 @@
 
 
     //建立取得特定縣市下特地鄉鎮選項函式
-    const authorizationKey = "CWA-E0E61E4E-1AD8-48E2-9C29-071A5D039A70";
+    const authorizationKey = "CWA-3ECB9E30-4F07-441C-B739-AAFDEF0B8A99";
     let townshipData = "";
 
 
