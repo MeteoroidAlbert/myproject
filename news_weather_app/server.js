@@ -4,6 +4,8 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 // 代理请求到 News API
+app.use(cors());
+
 app.get('/news', async (req, res) => {
     const { q, page } = req.query;
     const userAPIKey = '274be492f3694b8eb864309d284d9c98'; // 替换为你的API密钥
