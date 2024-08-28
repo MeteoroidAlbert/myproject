@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lnag="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link href="css/style.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
+    <link href="css/weather-icons.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-md bg-light sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" id="homeAnchor" href="#">NewsApp</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarOffcanvasMd"
+                aria-controls="navbarOffcanvasMd">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarOffcanvasMd" aria-labelledby="navbarOffcanvasMdLabel">
+                <div class="d-flex justify-content-between" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" id="sportsAnchor">Sports</a>
+                        </li>
+                
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" id="weatherAnchor">Weather</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    
+    
+    <!--新聞內容-->
+    <div id="homePage">
+        <h1>News App!</h1>
+    </div>
+    
+    <div class="containter" id="searchPage">
+    
+        <h1>Welcom to News App (<span id="resultCount"></span> results about "<span id="keywords"></span>" found)
+        </h1>
+        <div class="row content">
+            <!--在此處顯示news info-->
+        </div>
+        <div class="d-flex flex-row justify-content-center align-items-center my-3">
+            <button class="btn btn-primary me-2" id="previousP"><i class="fa fa-chevron-left"></i></button>
+            <input type="number" id="pageInput">/<sapn id="totalPages"></sapn>
+            <button id="pageSearch" class="btn btn-outline-primary btn-sm">Go to page</button>
+            <button class="btn btn-primary ms-2" id="nextP"><i class="fa fa-chevron-right"></i></button>
+        </div>
+    
+    </div>
+    
+
+    <div class="container-fluid" id="weatherPage">
+        <!--台灣地圖-->
+        <div id="taiwan" class="m-1">
+            <div id="taiwan-map" >
+                <div id="map" >
+                    <svg id="svgMain" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"></svg>
+                    <div id="offshore">
+                        <svg id="svgLJ" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"></svg>
+                        <svg id="svgKM" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"></svg>
+                    </div>
+                    
+                    <div id="info-block"><i class="fa fa-info-circle"></i><span>點擊地圖或選單查看詳細資訊</span></div>
+                </div>
+            </div>
+    
+        </div>
+
+        <!--天氣資訊卡片-->
+        <div id="weatherCard" class="border p-2 m-1">
+            <div class="containter " id="cityWeatherCard">
+                <div class="card weatherCardPart" >
+                    <div class="container m-2  d-inline">
+                        <label for="cityDropdown">選擇縣市</label>
+                        <select id="cityDropdown"></select>
+                        <label for="townshipDropdown"></label>選擇鄉鎮</label>
+                        <select id="townshipDropdown"></select>
+                    </div>
+                    <div class="d-none" id="weatherCardInfo">
+                        <div class="card-body " id="localNameAndWxAndT">
+                            <div class="container d-flex flex-column justify-content-start border">
+                                <h1 class="card-title" id="locationName">locationName</h1>
+                                <p class="card-text" id="weatherDescription">weatherDescription</p>
+                    
+                            </div>
+                            <div class="container d-flex flex-row align-items-end justify-content-end">
+                                <h1 id="avgTemp">avgTemp</h1>
+                                <div id="wxIconPosition"></div>
+                            </div>
+                        </div>
+                        <div class="container ms-3" id="forecastCard">
+                            <i class="fa fa-droplet"></i>
+                            <p class="d-inline" id="rainProbability"></p><br>
+                            <i class="fa-solid fa-temperature-quarter"></i>
+                            <p class="d-inline" id="minToMaxTemp"></p>
+                            <p>
+                                風向: <span id="WD"></span><br>
+                                最大風速: <span id="WS"></span><br>
+                                濕度: <span id="RH"></span><br>
+                                最高體感溫度:<span id="maxAT"></span><br>
+                                紫外線指數: <span id="UVI"></span><br>
+                                最大舒適指數: <span id="maxCI"></span><br>
+                            </p>
+                    
+                            <div class="me-4">
+                                <p class="text-end">預測: <span id="predict"></span></p>
+                            </div>
+                        </div>
+                        <div id="local" class="border" style="width: 96%; margin: 5px auto"></div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
