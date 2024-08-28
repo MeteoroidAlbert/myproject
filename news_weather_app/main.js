@@ -87,16 +87,16 @@
         navbarOffcanvasMd.classList.remove("show");
 
         //取得三天以內的資訊
-        const userAPIKey = "274be492f3694b8eb864309d284d9c98";//User API Key請至 https://newsapi.org/ 註冊獲取
+        //const userAPIKey = "274be492f3694b8eb864309d284d9c98";//User API Key請至 https://newsapi.org/ 註冊獲取
         
-        const url = `
+        /*const url = `
         https://newsapi.org/v2/everything?q=${input}&from=${year}-${month}-${day}&language=en&pageSize=20&page=${page}&sortBy=popularity&apiKey=${userAPIKey}
-        `;
-        //const url = `https://newsdata.io/api/1/latest?country=us&q=${input}&apikey=pub_51930e68a360adfca3ee2aa01b3a7c1b4c73e`
+        `;*/
+        const url = `https://news-weather-app-4.onrender.com/news?q=${input}&page=${page}`
         
         const res = await fetch(url);
         const rawData = await res.json();
-        console.log(rawData);
+        //console.log(rawData);
 
 
 
@@ -122,26 +122,6 @@
 
         })
 
-        /*rawData.results.forEach(item => {
-            newsContent += `
-        <div class="card my-4 mx-2" style="width: 18rem;">
-            <img src="${item.image_url}" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">${item.title}}</h5>
-                <p class="card-text">${item.summary}</p>
-                <a href="${item.url}" target="_blank" class="btn btn-primary">Read in detail</a>
-            </div>        
-        </div>
-        `;
-            document.getElementById("resultCount").innerHTML = rawData.count;
-            document.getElementById("keywords").innerHTML = currentInput;
-            document.querySelector(".content").innerHTML = newsContent;
-            document.getElementById("totalPages").innerHTML = Math.ceil(rawData.count / 20);
-            document.getElementById("pageInput").value = page;
-
-        
-
-        })*/
     }
 
 
