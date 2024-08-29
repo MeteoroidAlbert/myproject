@@ -32,7 +32,7 @@ app.get('/news', async (req, res) => {
 });
 
 //請求獲取township weather data
-app.get("/township", async(req, res) => {
+app.get("/townships", async(req, res) => {
     const {cityID} = req.query;
     const authorizationKey = "CWA-25D5C0B9-0C4D-47FA-8063-886648122427";
 
