@@ -14,7 +14,7 @@
     searchForm.classList.add("flex-row");
     searchForm.innerHTML = `
     <input class="form-control me-2" type="search" id="searchInput" placeholder="Search" aria-label="Search">
-    <button class="btn btn-outline-success" type="submit" id="searchButton">Search</button>
+    <button class="btn btn btn-success" type="submit" id="searchButton">Search</button>
     `;
     const navbarSupportedContent =  document.getElementById("navbarSupportedContent");
     const navbarOffcanvasMd = document.getElementById("navbarOffcanvasMd");

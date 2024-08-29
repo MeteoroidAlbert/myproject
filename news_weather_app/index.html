@@ -41,23 +41,23 @@
     
     <!--新聞內容-->
     <div id="homePage">
-        <h1>News App!</h1>
+        <h1 id="logo">News App!</h1>
     </div>
     
     <div class="containter" id="searchPage">
-    
-        <h1>Welcom to News App (<span id="resultCount"></span> results about "<span id="keywords"></span>" found)
-        </h1>
-        <div class="row content">
-            <!--在此處顯示news info-->
+        <div id="searchContent">
+            <h1 id="found">Welcom to News App (<span id="resultCount"></span> results about "<span id="keywords"></span>" found)
+            </h1>
+            <div class="row content">
+                <!--在此處顯示news info-->
+            </div>
+            <div class="d-flex flex-row justify-content-center align-items-center my-3">
+                <button class="btn btn-success me-2" id="previousP"><i class="fa fa-chevron-left"></i></button>
+                <input type="number" id="pageInput">/<sapn id="totalPages"></sapn>
+                <button id="pageSearch" class="btn btn-success btn-sm">Go to page</button>
+                <button class="btn btn-success ms-2" id="nextP"><i class="fa fa-chevron-right"></i></button>
+            </div>
         </div>
-        <div class="d-flex flex-row justify-content-center align-items-center my-3">
-            <button class="btn btn-primary me-2" id="previousP"><i class="fa fa-chevron-left"></i></button>
-            <input type="number" id="pageInput">/<sapn id="totalPages"></sapn>
-            <button id="pageSearch" class="btn btn-outline-primary btn-sm">Go to page</button>
-            <button class="btn btn-primary ms-2" id="nextP"><i class="fa fa-chevron-right"></i></button>
-        </div>
-    
     </div>
     
 
