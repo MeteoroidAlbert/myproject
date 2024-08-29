@@ -266,7 +266,6 @@
 
 
     //建立取得特定縣市下特地鄉鎮選項函式
-    const authorizationKey = "CWA-25D5C0B9-0C4D-47FA-8063-886648122427";
     let townshipData = "";
 
 
@@ -277,8 +276,6 @@
         }
         else {
             const cityID = citySourceID[index].id;
-            //const cityURL = `https://opendata.cwa.gov.tw/api/v1/rest/datastore/${citySourceID[index].id}?Authorization=${authorizationKey}`;
-            //const res = await fetch(cityURL);
             const res = await fetch(`https://news-weather-app-4.onrender.com/townships?cityID=${cityID}`);
             townshipData = await res.json();
             townshipData.records.locations[0].location.forEach((item) => {
@@ -314,7 +311,6 @@
     let cityMinTAndMaxT = [];
     let isMorningForecastToday = true;
     const fetchCityWeatherData = async() => {
-        //const res = await fetch(`https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-091?Authorization=${authorizationKey}`);
         const res = await fetch(`https://news-weather-app-4.onrender.com/city-weather`);
         cityData = await res.json();
         const morning = /18:00:00/;
