@@ -87,8 +87,12 @@
         navbarOffcanvasMd.classList.remove("show");
 
         //取得三天以內的資訊
-        const url = `https://news-weather-app-4.onrender.com/news?q=${input}&page=${page}`
-        
+        //const url = `https://news-weather-app-4.onrender.com/news?q=${input}&page=${page}`
+        const userAPIKey = "274be492f3694b8eb864309d284d9c98";//User API Key請至 https://newsapi.org/ 註冊獲取
+
+        const url = `
+        https://newsapi.org/v2/everything?q=${input}&from=${year}-${month}-${day}&language=en&pageSize=20&page=${page}&sortBy=popularity&apiKey=${userAPIKey}
+        `;
         const res = await fetch(url);
         const rawData = await res.json();
 
@@ -96,19 +100,19 @@
         let newsContent = "";
         rawData.articles.forEach(item => {
             newsContent += `
-        <div class="card my-4 mx-2" style="width: 18rem;">
-            <img src="${item.urlToImage}" class="card-img-top" alt="...">
+        <div class="card my-4 mx-2 newsCard" style="width: 18rem;">
+            <img src="${item.urlToImage}" class="card-img-top pt-3" alt="...">
             <div class="card-body">
                 <h5 class="card-title">${item.title}}</h5>
                 <p class="card-text">${item.description}</p>
-                <a href="${item.url}" target="_blank" class="btn btn-primary">Read in detail</a>
+                <a href="${item.url}" target="_blank" class="btn btn-success">Read in detail</a>
             </div>        
         </div>
         `;
             document.getElementById("resultCount").innerHTML = rawData.totalResults;
             document.getElementById("keywords").innerHTML = currentInput;
             document.querySelector(".content").innerHTML = newsContent;
-            document.getElementById("totalPages").innerHTML = Math.ceil(rawData.totalResults / 20);
+            document.getElementById("totalPages").innerHTML = `/ ${Math.ceil(rawData.totalResults / 20)}`;
             document.getElementById("pageInput").value = page;
         })
 
