@@ -87,17 +87,10 @@
         navbarOffcanvasMd.classList.remove("show");
 
         //取得三天以內的資訊
-        //const userAPIKey = "274be492f3694b8eb864309d284d9c98";//User API Key請至 https://newsapi.org/ 註冊獲取
-        
-        /*const url = `
-        https://newsapi.org/v2/everything?q=${input}&from=${year}-${month}-${day}&language=en&pageSize=20&page=${page}&sortBy=popularity&apiKey=${userAPIKey}
-        `;*/
         const url = `https://news-weather-app-4.onrender.com/news?q=${input}&page=${page}`
         
         const res = await fetch(url);
         const rawData = await res.json();
-        //console.log(rawData);
-
 
 
         let newsContent = "";
@@ -117,9 +110,6 @@
             document.querySelector(".content").innerHTML = newsContent;
             document.getElementById("totalPages").innerHTML = Math.ceil(rawData.totalResults / 20);
             document.getElementById("pageInput").value = page;
-
-        
-
         })
 
     }
@@ -286,8 +276,10 @@
             return;
         }
         else {
-            const cityURL = `https://opendata.cwa.gov.tw/api/v1/rest/datastore/${citySourceID[index].id}?Authorization=${authorizationKey}`;
-            const res = await fetch(cityURL);
+            const cityID = citySourceID[index].id;
+            //const cityURL = `https://opendata.cwa.gov.tw/api/v1/rest/datastore/${citySourceID[index].id}?Authorization=${authorizationKey}`;
+            //const res = await fetch(cityURL);
+            const res = await fetch(`https://news-weather-app-4.onrender.com/townships?cityID=${cityID}`);
             townshipData = await res.json();
             townshipData.records.locations[0].location.forEach((item) => {
                 townshipDropdown.innerHTML += `<option value="${item.locationName}">${item.locationName}</option>`;
@@ -322,7 +314,8 @@
     let cityMinTAndMaxT = [];
     let isMorningForecastToday = true;
     const fetchCityWeatherData = async() => {
-        const res = await fetch(`https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-091?Authorization=${authorizationKey}`);
+        //const res = await fetch(`https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-091?Authorization=${authorizationKey}`);
+        const res = await fetch(`https://news-weather-app-4.onrender.com/city-weather`);
         cityData = await res.json();
         const morning = /18:00:00/;
         isMorningForecastToday = morning.test(cityData.records.locations[0].location[0].weatherElement[0].time[0].endTime);
@@ -778,21 +771,18 @@
 
 
 
+//建立監聽處理各種資訊改變時，調用各種函式
 
     //建立清除原svg內容的函式
     const clearSvgContent = () => {
         d3.select("#svgMain").selectAll("*").remove();
         d3.select("#svgLJ").selectAll("*").remove();
     };
+    
+    
+    
     //當頁面大小重新定義時，清除原來svg內容，再重新呼叫getTaiwanMap，以確保更新width、height變數被正確使用於新的視窗大小之下
     
-    /*window.addEventListener('load', async() => {
-        await fetchCityWeatherData(); 
-        changeCardBackground();
-        clearSvgContent();
-        getTaiwanMap();
-        
-    });*/
     window.addEventListener('resize', async() => {
         await fetchCityWeatherData();
         clearSvgContent();
