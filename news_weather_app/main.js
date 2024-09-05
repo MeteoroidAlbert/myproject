@@ -777,6 +777,7 @@
     const clearSvgContent = () => {
         d3.select("#svgMain").selectAll("*").remove();
         d3.select("#svgLJ").selectAll("*").remove();
+        d3.select("#svgKM").selectAll("*").remove();
     };
     
     
