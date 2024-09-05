@@ -87,12 +87,8 @@
         navbarOffcanvasMd.classList.remove("show");
 
         //取得三天以內的資訊
-        //const url = `https://news-weather-app-4.onrender.com/news?q=${input}&page=${page}`
-        const userAPIKey = "274be492f3694b8eb864309d284d9c98";//User API Key請至 https://newsapi.org/ 註冊獲取
-
-        const url = `
-        https://newsapi.org/v2/everything?q=${input}&from=${year}-${month}-${day}&language=en&pageSize=20&page=${page}&sortBy=popularity&apiKey=${userAPIKey}
-        `;
+        const url = `https://news-weather-app-4.onrender.com/news?q=${input}&page=${page}`
+        
         const res = await fetch(url);
         const rawData = await res.json();
 
