@@ -449,7 +449,7 @@
                     </div>
                     ${isMorningForecastToday ? `
                     <div class="card mb-3 mx-2 weatherCardPart" style="width: 95%;">
-                        <div class="card-body d-flex flex-row" justify-content-between> 
+                        <div class="card-body d-flex flex-row justify-content-between"> 
                             <div class="d-flex flex-column justify-content-start">
                                 <h4 class="card-title">夜晚</h4>
                                 <p class="card-text">${targetTownshipWx(1)}</p>   
