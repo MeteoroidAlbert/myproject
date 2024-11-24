@@ -10,7 +10,7 @@ app.use(cors());
 //請求獲取新聞資訊
 app.get('/news', async (req, res) => {
     const { q, page } = req.query;
-    const userAPIKey = 'fb775cb64d134b5a87af351021cce00d'; 
+    const userAPIKey = '274be492f3694b8eb864309d284d9c98'; 
 
     try {
         const response = await axios.get(`https://newsapi.org/v2/everything`, {
